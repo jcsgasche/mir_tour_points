@@ -1,0 +1,34 @@
+P1: 
+2 tbl
+25 ml
+30 robotik
+
+P2:
+33 Grace Hopper
+40 erster Compiler / COBOL
+
+P3:
+3 Alan Turing
+10 Turing Test
+20 Codentschlüsselungen WW2
+
+P4:
+5 Peppers
+12 LLMs
+
+P7:
+4 Zuse
+10 Z3 Computer
+18 Plank Kalkül
+
+P16:
+5 MiR
+15 AR Lab Team
+40 Helfer
+52 Go1
+1:00 Go1 Exploration
+1:13 Spot
+1:20 Boston Dynamics Dance
+1:40 Peppers
+1:46 QTs
+1:58 PackBot

@@ -69,6 +69,11 @@ def flask_video(video, sound):
         'sound': sound
     }
     fsio.socketio.emit('show_content', content_info)
+    
+def run_flask_video(video, sound, delay):
+    time.sleep(delay)
+    flask_video(video, sound)
+        
 
 
 class MirTourPoints:
@@ -77,17 +82,137 @@ class MirTourPoints:
         global fsio
         self.mir_tour_infos = mir_tour_infos
         flask()
+        #image_thread = Thread(target= run_flask_image, args=())
 
     def p1(cls):
-        tts_thread = Thread(target=run_tts, args=("1"))
+        threads = []
+
+        # Start threads and add them to the list
+        tts_thread = Thread(target=run_tts, args=("1",))
         tts_thread.start()
+        threads.append(tts_thread)
         
-        image_thread = Thread(target= run_flask_image, args=('tim_berners_lee.jpg',7,5))
-        image_thread.start()
+        image_thread1 = Thread(target=run_flask_image, args=('p1/tim_berners_lee.jpg', 10, 2))
+        image_thread1.start()
+        threads.append(image_thread1)
+        
+        image_thread2 = Thread(target=run_flask_image, args=('p1/ml.jpg', 5, 25))
+        image_thread2.start()
+        threads.append(image_thread2)
+        
+        image_thread3 = Thread(target=run_flask_image, args=('p1/robots.png', 5, 40))
+        image_thread3.start()
+        threads.append(image_thread3)
+
+        # Wait for all threads to complete
+        for thread in threads:
+            thread.join()
 
     def p2(cls):
-        tts.tts(mir_tour_infos["2"])
+        threads = []
+        
+        tts_thread = Thread(target=run_tts, args=("2"))
+        tts_thread.start()
+        threads.append(tts_thread)
+        
+        video_thread = Thread(target=run_flask_video, args=('p2/irc.mp4', False, 2))
+        video_thread.start()
+        threads.append(video_thread)
+        
+        image_thread1 = Thread(target=run_flask_image, args=('p2/grace_hopper.png', 2, 35))
+        image_thread1.start()
+        threads.append(image_thread1)
+        
+        image_thread2 = Thread(target=run_flask_image, args=('p2/real_admiral_grace_hopper.jpg', 3, 37))
+        image_thread2.start()
+        threads.append(image_thread2)
+        
+        image_thread3 = Thread(target=run_flask_image, args=('p2/compiler.jpg', 5, 42))
+        image_thread3.start()
+        threads.append(image_thread3)
+        
+        image_thread4 = Thread(target=run_flask_image, args=('p2/cobol.jpeg', 5, 50))
+        image_thread4.start()
+        threads.append(image_thread4)
+        
+        for thread in threads:
+            thread.join()
+            
+    def p3(cls):
+        threads = []
+        
+        tts_thread = Thread(target=run_tts, args=("3"))
+        tts_thread.start()
+        threads.append(tts_thread)
+        
+        image_thread1 = Thread(target=run_flask_image, args=('p3/alan_turing.jpg', 3, 2))
+        image_thread1.start()
+        threads.append(image_thread1)
+        
+        image_thread2 = Thread(target=run_flask_image, args=('p3/alan_turing_2.jpg', 3, 6))
+        image_thread2.start()
+        threads.append(image_thread2)
+        
+        image_thread3 = Thread(target=run_flask_image, args=('p3/turing_test.jpg', 5, 12))
+        image_thread3.start()
+        threads.append(image_thread3)
+        
+        image_thread4 = Thread(target=run_flask_image, args=('p3/ww2.jpg', 5, 20))
+        image_thread4.start()
+        threads.append(image_thread4)
+            
+        for thread in threads:
+            thread.join()
+    
+    def p4(cls):
+        threads = []
+        
+        tts_thread = Thread(target=run_tts, args=("4"))
+        tts_thread.start()
+        threads.append(tts_thread)
+        
+        image_thread1 = Thread(target=run_flask_image, args=('p4/peppers.jpg', 7, 5))
+        image_thread1.start()
+        
+        image_thread2 = Thread(target=run_flask_image, args=('p4/conversation.jpg', 10, 16))
+        image_thread2.start()
+        
+        for thread in threads:
+            thread.join()
+            
+    def p7(cls):
+        threads = []
+        
+        tts_thread = Thread(target=run_tts, args=("7"))
+        tts_thread.start()
+        threads.append(tts_thread)
+        
+        image_thread1 = Thread(target=run_flask_image, args=('p7/konrad_zuse.jpg', 5, 3))
+        image_thread1.start()
+        threads.append(image_thread1)
+        
+        image_thread2 = Thread(target=run_flask_image, args=('p7/z3.jpg', 5, 10))
+        image_thread2.start()
+        threads.append(image_thread2)
+        
+        image_thread3 = Thread(target=run_flask_image, args=('p7/plankalkuel.png', 5, 20))
+        image_thread3.start()
+        threads.append(image_thread3)
+        
+        for thread in threads:
+            thread.join()
+            
+    def p16(cls):
+        threads = []
+        
+        tts_thread = Thread(target=run_tts, args=("16"))
+        tts_thread.start()
+        threads.append(tts_thread)
+
+        for thread in threads:
+            thread.join()
+        
         
         
 if __name__ == "__main__":
-    tts.tts("Let's go")
+    run_tts("16")
