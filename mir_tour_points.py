@@ -76,7 +76,7 @@ def run_flask_video(video, sound, delay):
         
 
 
-class MirTourPoints:
+class MirTourPoints():
     def __init__(self):
         global tts
         global fsio
@@ -111,7 +111,7 @@ class MirTourPoints:
     def p2(cls):
         threads = []
         
-        tts_thread = Thread(target=run_tts, args=("2"))
+        tts_thread = Thread(target=run_tts, args=("2",))
         tts_thread.start()
         threads.append(tts_thread)
         
@@ -141,7 +141,7 @@ class MirTourPoints:
     def p3(cls):
         threads = []
         
-        tts_thread = Thread(target=run_tts, args=("3"))
+        tts_thread = Thread(target=run_tts, args=("3",))
         tts_thread.start()
         threads.append(tts_thread)
         
@@ -167,7 +167,7 @@ class MirTourPoints:
     def p4(cls):
         threads = []
         
-        tts_thread = Thread(target=run_tts, args=("4"))
+        tts_thread = Thread(target=run_tts, args=("4",))
         tts_thread.start()
         threads.append(tts_thread)
         
@@ -183,7 +183,7 @@ class MirTourPoints:
     def p7(cls):
         threads = []
         
-        tts_thread = Thread(target=run_tts, args=("7"))
+        tts_thread = Thread(target=run_tts, args=("7",))
         tts_thread.start()
         threads.append(tts_thread)
         
@@ -205,14 +205,73 @@ class MirTourPoints:
     def p16(cls):
         threads = []
         
-        tts_thread = Thread(target=run_tts, args=("16"))
+        tts_thread = Thread(target=run_tts, args=("16",))
         tts_thread.start()
         threads.append(tts_thread)
+        
+        image_thread1 = Thread(target=run_flask_image, args=("p16/mir.jpg", 5, 5))
+        image_thread1.start()
+        threads.append(image_thread1) 
+        
+        image_thread2 = Thread(target=run_flask_image, args=("p16/team.jpg", 5, 15))
+        image_thread2.start()
+        threads.append(image_thread2)
+        
+        video_thread1 = Thread(target=run_flask_video, args=("p16/go1.mp4", False, 52))
+        video_thread1.start()
+        threads.append(video_thread1)
+        
+        video_thread2 = Thread(target=run_flask_video, args=("p16/go1_exploration.mp4", False, 60))
+        video_thread2.start()
+        threads.append(video_thread2)
+        
+        image_thread3 = Thread(target=run_flask_image, args=("p16/spot.jpg", 5, 73))
+        image_thread3.start()
+        threads.append(image_thread3)
+    
+        video_thread3 = Thread(target=run_flask_video, args=("p16/dance.mp4", False, 80))
+        video_thread3.start()
+        threads.append(video_thread3)
+        
+        video_thread4 = Thread(target=run_flask_video, args=("p16/spot_action.mp4", False, 90))
+        video_thread4.start()
+        threads.append(video_thread4)
+        
+        image_thread4 = Thread(target=run_flask_image, args=("p16/peppers.jpg", 5, 104))
+        image_thread4.start()
+        threads.append(image_thread4)
+        
+        image_thread5 = Thread(target=run_flask_image, args=("p16/qt.png", 5, 110))
+        image_thread5.start()
+        threads.append(image_thread5)
+        
+        video_thread5 = Thread(target=run_flask_video, args=("p16/packbot.mp4", False, 118))
+        video_thread5.start()
+        threads.append(video_thread5)
+                
+        for thread in threads:
+            thread.join()
+            
+    def p18(cls):
+        threads = []
 
+        tts_thread = Thread(target=run_tts, args=("18",))
+        tts_thread.start()
+        threads.append(tts_thread)
+        
+        image_thread1 = Thread(target=run_flask_image, args=("p18/margaret_hamilton.jpg", 4, 15))
+        image_thread1.start()
+        threads.append(image_thread1)
+        
+        image_thread2 = Thread(target=run_flask_image, args=("p18/steve_wozniak.jpg", 4, 20))
+        image_thread2.start()
+        threads.append(image_thread2)
+        
         for thread in threads:
             thread.join()
         
-        
-        
+    def p99(cls):
+        run_tts("99")
+            
 if __name__ == "__main__":
-    run_tts("16")
+    pass

@@ -25,10 +25,15 @@ P16:
 5 MiR
 15 AR Lab Team
 40 Helfer
-52 Go1
-1:00 Go1 Exploration
-1:13 Spot
-1:20 Boston Dynamics Dance
+52 Go1 - 7 sec
+1:00 Go1 Exploration - 12 sec
+1:13 Spot 
+1:20 Boston Dynamics Dance - 9 sec
+1:30 Spot Launch - 9 sec
 1:40 Peppers
 1:46 QTs
-1:58 PackBot
+1:58 PackBot - 5 sec
+
+P18:
+15 Margaret
+20 Steve
