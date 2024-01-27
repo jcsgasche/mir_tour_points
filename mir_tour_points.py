@@ -1,3 +1,5 @@
+tts_play = True
+
 import sys
 import os
 import json
@@ -15,12 +17,10 @@ for path in paths:
 from flask_socket import FlaskSocketIO
 fsio = FlaskSocketIO()
 
-    
 mir_tour_infos_path = os.path.expanduser("~/mir_tour/mir_tour_infos/mir_tour.json")
 
 with open(mir_tour_infos_path, 'r') as f:
     mir_tour_infos = json.load(f)
-
 
 from api_keys import (AZURE_SPEECH_KEY)
 
@@ -30,16 +30,15 @@ AZURE_SPEECH_REGION = "switzerlandnorth"
 model_name = 'de-DE-ConradNeural'
 #model_name = 'de-CH-JanNeural'
 #model_name = 'de-CH-LeniNeural'
-
+        
 tts = AzureTTS(
-    api_key=AZURE_SPEECH_KEY, 
-    region=AZURE_SPEECH_REGION, 
-    model_name=model_name, 
-    play=True)
+api_key=AZURE_SPEECH_KEY, 
+region=AZURE_SPEECH_REGION, 
+model_name=model_name, 
+play=tts_play)
 
 def run_tts(point):
-    tts.tts(mir_tour_infos[point])
-
+        tts.tts(mir_tour_infos[point])
 
 def flask():
     global fsio
@@ -78,9 +77,9 @@ def run_flask_video(video, sound, delay):
 
 class MirTourPoints():
     def __init__(self):
-        global tts
         global fsio
         self.mir_tour_infos = mir_tour_infos
+        
         flask()
         #image_thread = Thread(target= run_flask_image, args=())
 
